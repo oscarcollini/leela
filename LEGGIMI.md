@@ -1,105 +1,67 @@
-# leela — PWA classica 0.4.5
+# leela — PWA classica 0.4.7
 
-## Pubblica
+## Cambiamento
+
+Rimossa la procedura a dieci passaggi della 0.4.6. Non ci sono pulsanti Avanti o conferme intermedie: prima foto → seconda foto → risultato, con avanzamento automatico dopo ogni scatto.
+
+- Prima foto: un campo «Primo piano a circa … m» aggiorna subito il suggerimento di spostamento. Valore iniziale 3 metri.
+- Seconda foto: istruzione breve con la misura suggerita e il riferimento lontano da mantenere alla stessa altezza.
+- Risultato: scelta del formato e cursori disponibili insieme, prima verticale e poi orizzontale. L’indicazione del dettaglio da allineare cambia con il formato.
+- La guida completa rimane facoltativa nel pulsante Guida.
+
+## Aggiornamento
 
 1. Estrai lo ZIP.
-2. Carica tutti i file della cartella `leela` insieme sul tuo hosting statico HTTPS, per esempio GitHub Pages. Conserva i nomi e la posizione relativa dei file.
-3. Apri l’indirizzo del sito in Chrome.
-4. Attendi «Pronta per l’uso offline · 0.4.5».
-5. Menu ⋮ → Aggiungi a schermata Home → Installa.
-6. Avvia leela dall’icona. Consenti la fotocamera.
+2. Carica solo il contenuto della cartella `leela` nello stesso percorso HTTPS del sito esistente, per esempio nella radice del repository GitHub Pages.
+3. Riapri il sito in Chrome. Se compare «Aggiorna app», salva gli scatti e toccalo.
+4. In Guida → App attendi lo stato «Pronta per l’uso offline · 0.4.7».
 
-Non aprire l’HTML locale per installare la PWA. Non sono richiesti account o servizi ChatGPT. Questo pacchetto non è stato pubblicato su ChatGPT Sites. La pubblicazione su un hosting classico resta da fare; lo ZIP non è un’app Android installabile direttamente.
+Non serve rinominare il repository né cambiare URL. Il manifest conserva identità e scope relativi allo stesso percorso. Lo ZIP contiene sorgenti statici; non richiede compilazione o servizi ChatGPT. Il file HTML locale non permette di installare la PWA; usa il sito HTTPS per fotocamera e installazione.
 
-## Scatta
+## Uso
 
-1. Porta il peso sul piede sinistro. Inquadra una scena ferma. Tieni il telefono diritto. Scatta.
-2. Porta il peso sul piede destro, spostando il telefono lateralmente senza ruotarlo.
-3. Mantieni un punto lontano alla stessa altezza nelle due immagini. Non girare il telefono per sovrapporlo in orizzontale.
-4. Scatta la seconda foto.
-5. Regola l’allineamento: correggi prima l’altezza, poi sovrapponi un punto vicino.
-6. Salva il risultato prima di chiudere l’app.
+1. Stima la distanza dalla fotocamera all’elemento più vicino nell’inquadratura, anche se compare soltanto sul bordo. Puoi modificare direttamente il campo nella schermata della prima foto.
+2. Apri la fotocamera. Inquadra una scena ferma con elementi a distanze diverse, lasciando margine ai bordi. Scatta.
+3. Sposta il telefono a destra della misura suggerita, mantenendo altezza e direzione. Non ruotarlo verso il soggetto. Un dettaglio lontano deve stare alla stessa altezza nelle due immagini; può restare separato lateralmente. Scatta la seconda foto.
+4. Nel risultato scegli il formato. Per Alternanza/GIF, allinea un dettaglio che vuoi mantenere fermo. Per Rosso/ciano o Affiancate, parti da un dettaglio dell’oggetto più vicino.
+5. Correggi prima l’altezza, poi sovrapponi lateralmente il dettaglio. Gli altri oggetti possono restare separati.
+6. Regola la velocità se usi Alternanza, quindi salva.
 
-Evita primi piani ravvicinati e soggetti in movimento. Il trasferimento del peso non misura la base di ripresa: per soggetti vicini riduci lo spostamento.
+«Rifai il secondo scatto» conserva il primo e ti riporta alla seconda posizione; non chiede di spostarti ancora. «Nuova coppia» riavvia la ripresa e scarta gli scatti della sessione. Durante la ripresa il documento non scorre e il pulsante di scatto resta nella schermata. Nei risultati puoi scorrere i comandi; Nuova coppia e Guida restano nella barra superiore.
 
-## Esporta
+## Suggerimento di spostamento
 
-- Alternanza → regola «Velocità dell’alternanza» → «Salva GIF alternata».
-- Rosso/ciano → «Salva anaglifo PNG».
-- Affiancate → «Salva coppia PNG».
+La stima usa distanza del primo piano / 50: 2 centimetri per ogni metro. Esempi: 1 m → 2 cm; 2,5 m → 5 cm; 3 m → 6 cm; 5 m → 10 cm. Il campo accetta valori da 0,5 a 1000 metri; i limiti numerici non sono una certificazione di precisione. Un valore vuoto o non valido disabilita lo scatto finché viene corretto.
 
-La GIF usa le due foto già allineate, l’ordine sinistra/destra scelto e l’intervallo impostato. Si ripete in ciclo. Lato lungo massimo 720 px; palette condivisa da 256 colori, quindi la resa cromatica è ridotta rispetto alle foto. L’encoder usa blocchi LZW brevi: i file possono pesare più di GIF con compressione ottimizzata. Il PNG mantiene la risoluzione della coppia allineata. Tutto viene elaborato sul dispositivo.
+È una scelta iniziale prudente rispetto alla regola indicativa 1:30, non una garanzia. La resa dipende anche da inquadratura, sfondo, ritagli e visualizzazione. Usa l’inquadratura normale senza zoom. Se il movimento o il rilievo sono troppo forti, ripeti con uno spostamento più piccolo. L’app non misura quanto il telefono si muove. Trasferire il peso fra i piedi non corrisponde a una distanza fissa.
 
-## Modifiche della 0.4.5
+Riferimenti: https://isu3d.org/goldenrules/ ; https://www.stereoscopy.com/library/waack-ch-4.html ; https://www.44bx.com/vic3d/bases.html
 
-- Slider «Velocità dell’alternanza»: verso destra accelera. Intervallo da 1000 a 50 ms per foto; valore iniziale 450 ms. La GIF usa lo stesso intervallo selezionato.
-- Guida riorganizzata nelle sezioni Scatta, Allinea, Rilievo, Consigli e App. Istruzioni illustrate, spiegazioni dei formati e soluzioni pratiche distinte e navigabili.
-- Pulsante «Torna alle foto» e navigazione della guida sempre visibili; scorre soltanto il contenuto della sezione.
-- Nome aggiornato in tutte le occorrenze: leela, inclusi manifest, cache e file esportati.
-- Nuova palette viola #923B9D, grigio #4D5D65 e bianco.
-- Icona A: pupilla nera centrale, due contorni viola sfalsati, bordi interni attenuati al 50%, sclera bianca nella sovrapposizione ed estremità al 50%.
-- Registrazione della fotocamera, ripresa, sovrapposizione e allineamento conservano la logica già provata sul telefono.
+## Esportazione e dati
 
-## Caratteristiche consolidate
+- Alternanza: GIF animata in ciclo, due fotogrammi, lato lungo massimo 720 px, palette condivisa da 256 colori. Intervallo 1000–50 ms; iniziale 450 ms.
+- Rosso/ciano: anaglifo PNG, rosso per l’occhio sinistro.
+- Affiancate: coppia PNG sinistra/destra per visore o visione parallela.
 
-- «Nuova coppia» nella barra superiore, visibile durante la ripresa e nel risultato.
-- Disegni di allineamento disponibili nelle istruzioni anche su telefono.
-- Icona coordinata al nome leela e alla nuova palette.
+Gli scatti restano in memoria: salva prima di chiudere o ricaricare. Tutto viene elaborato sul dispositivo, senza inviare foto a un server. Passare a un’altra app spegne la fotocamera; riaprila al ritorno. Gli aggiornamenti non ricaricano automaticamente una sessione con scatti non salvati.
 
-- Nome: leela. Icona: occhio sdoppiato con pupilla centrale.
-- Inquadratura e scatto restano nella schermata durante entrambi gli scatti, in verticale e in orizzontale. Il formato del fotogramma viene conservato; lo spazio libero resta attorno all’immagine.
-- Istruzioni brevi; guida completa nel pulsante «Guida».
-- Importazione foto separata dalla fotocamera integrata.
-- Esportazione GIF locale, inclusa nella cache offline.
-- Pacchetto statico autonomo; nessuna dipendenza da ChatGPT, CDN, librerie remote o server di elaborazione.
+## Ritorno alla 0.4.5
 
-Gli scatti restano soltanto in memoria: chiudere o ricaricare l’app li perde. Passare a un’altra app spegne la fotocamera; riaprila al ritorno. «Chiudi fotocamera» conserva il primo scatto nella sessione. Gli aggiornamenti non ricaricano automaticamente una sessione con foto non salvate.
+La cartella `ritorno_0.4.5` contiene lo ZIP originale della versione prima degli esperimenti con la guida. Per tornare a quella versione, estrailo e carica il contenuto della sua cartella `leela` nello stesso percorso del sito. Riapri il sito, usa Aggiorna app se compare e verifica lo stato offline 0.4.5. Non caricare la cartella di ripristino nel sito.
 
-## Sorgenti
+## Componenti
 
-- `index.html`: interfaccia, fotocamera, allineamento ed esportazione.
-- `pwa.js`: installazione, stato offline e aggiornamento volontario.
-- `sw.js`: cache delle risorse locali e avvio offline.
-- `gif-encoder.js`: encoder GIF89a autonomo, palette RGB332 condivisa, due fotogrammi.
-- `manifest.webmanifest`, `icon-*.png`: configurazione e icone della PWA.
+`index.html`: interfaccia, fotocamera, allineamento ed esportazione. `pwa.js`: installazione e aggiornamento volontario. `sw.js`: cache offline. `gif-encoder.js`: encoder GIF autonomo. `manifest.webmanifest`: installazione PWA. `icon.svg` e `icon-*.png`: icone.
 
-Nessuna compilazione necessaria. Per una nuova versione cambia sia `data-version` in index.html sia `VERSION` in sw.js. Pubblica insieme tutti i file.
+Palette viola #923B9D, grigio #4D5D65 e bianco; icona A. Nessuna nuova dipendenza o permesso.
 
-## Verifiche della 0.4.4 (versione precedente)
+## Verifiche 0.4.7
 
-- Estremi 50 e 1000 ms e valore iniziale 450 ms controllati.
-- GIF agli estremi decodificate con un lettore indipendente: due fotogrammi, temporizzazione corretta e ciclo continuo.
-- Nella versione precedente, confronto del codice della ripresa con la 0.4.3: identico.
-- Navigazione della guida verificata nel browser a 360×640 e 320×480; comando per tornare alla foto visibile. Secondo scatto simulato a 320×480: documento senza scorrimento, tasto scatto entro lo schermo.
-- Riferimenti DOM e sintassi JavaScript verificati.
+- Sintassi JavaScript, riferimenti DOM, assenza della procedura a passaggi, ordine dei cursori, validazione e calcolo della distanza verificati automaticamente.
+- Istruzioni per il riferimento da allineare verificate per GIF e stereo.
+- Acquisizione, normalizzazione, ritaglio, disegno del risultato ed esportazione confrontati con la 0.4.5: invariati.
+- Interfaccia controllata nel browser con scatti simulati: passaggio diretto prima → seconda → risultato, modifica della distanza, cambio formato, ripetizione della seconda foto e nuova coppia.
+- Nessuno scorrimento durante la ripresa a 320×480 e 640×360. Primo scatto a 320×480: pulsante fra y=378 e y=428; secondo fra y=332 e y=382; secondo a 640×360 fra y=286 e y=329.
+- Integrità dello ZIP e copia originale di ripristino verificate.
 
-## Verifiche precedenti
-
-- Sintassi JavaScript, riferimenti DOM e file locali del manifest verificati.
-- Mirino e scatto controllati nel browser con viewport 320×568, 320×480 e 640×360, anche al secondo scatto simulato. Nessuno scorrimento del documento durante la ripresa.
-- GIF creata dall’interfaccia, poi riaperta con un decoder indipendente: due immagini diverse, 720×540, 450 ms per fotogramma e ciclo continuo.
-- Encoder controllato anche con dimensioni minime e ai confini dei blocchi LZW.
-- Ripresa e sovrapposizione sono state confermate dall’utente sulla versione precedente. Nuova guida e nuova gamma di velocità vanno provate sul telefono dopo l’aggiornamento.
-
-Riferimento formato: https://www.w3.org/Graphics/GIF/spec-gif89a.txt. Graphics Interchange Format e GIF sono attribuiti a CompuServe Incorporated nella specifica originale.
-
-## Riferimenti per la guida
-
-- International Stereoscopic Union, The Three Golden Rules: https://isu3d.org/goldenrules/
-- Fritz G. Waack, Stereo Photography, esposizione e base: https://www.stereoscopy.com/library/waack-ch-4.html
-
-## Aggiornamento del nome e della grafica (0.4.5)
-
-Pubblica i file di `leela` nello stesso percorso del sito già installato per aggiornare la PWA esistente. Il nome della cartella nel pacchetto non impone di cambiare URL o repository. L’identità del manifest, lo scope e lo start URL restano relativi allo stesso percorso. Dopo la pubblicazione usa «Aggiorna app», se compare, e attendi lo stato offline 0.4.5. Chrome può aggiornare nome e icona dell’installazione con ritardo; il titolo dentro l’app cambia subito dopo l’aggiornamento.
-
-La fotografia, l’allineamento e le temporizzazioni conservano la logica precedente. Le illustrazioni dimostrative usano la nuova palette; i colori delle foto importate o scattate non vengono alterati dal tema.
-
-## Controlli della 0.4.5
-
-- Nessuna occorrenza del vecchio nome nei sorgenti e nelle istruzioni distribuiti.
-- Sintassi JavaScript, riferimenti DOM, manifest e risorse locali verificati.
-- Logica fotografica confrontata con la 0.4.4; nel JavaScript cambiano soltanto identificatori del nome e colori delle illustrazioni dimostrative.
-- Encoder GIF verificato con decodifica indipendente a 50 e 1000 ms.
-- Installazione della cache e avvio offline verificati con risposte simulate delle risorse; non costituisce una nuova prova di installazione sul telefono.
-- PNG verificati a 192 e 512 pixel; icona controllata visivamente.
-- Nuova palette e aggiornamento dell’icona installata restano da verificare sul dispositivo.
+Non è una nuova prova con la fotocamera fisica né una nuova installazione Android. La logica fotografica deriva dalla versione già provata dall’utente; la comodità delle nuove istruzioni resta da valutare sul telefono.
