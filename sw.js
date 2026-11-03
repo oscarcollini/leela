@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='0.4.8';
+const VERSION='0.4.9';
 const CACHE='leela-'+VERSION;
 const BASE=new URL('./',self.location.href);
 const FILES=['./','./pwa.js','./gif-encoder.js','./level.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable.png'];
