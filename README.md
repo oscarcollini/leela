@@ -1,2 +1,0 @@
-# Fieldman
-Stereographic pictures
