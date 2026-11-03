@@ -37,5 +37,5 @@
   bytes([0x3b]);
   const out=new Uint8Array(parts.reduce((n,p)=>n+p.length,0));let offset=0;for(const part of parts){out.set(part,offset);offset+=part.length}return out;
  }
- root.MartyGIF={encode};
+ root.LeelaGIF={encode};
 })(typeof globalThis!=='undefined'?globalThis:this);

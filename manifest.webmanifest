@@ -1,14 +1,14 @@
 {
   "id": "./",
-  "name": "marty · Foto stereo",
-  "short_name": "marty",
+  "name": "leela · Foto stereo",
+  "short_name": "leela",
   "description": "Due scatti guidati, sovrapposizione e foto stereo sul dispositivo.",
   "lang": "it",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f4ed",
-  "theme_color": "#243e37",
+  "background_color": "#ffffff",
+  "theme_color": "#4d5d65",
   "icons": [
     {
       "src": "./icon-192.png",
