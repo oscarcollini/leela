@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='0.4.3';
+const VERSION='0.4.4';
 const CACHE='marty-'+VERSION;
 const BASE=new URL('./',self.location.href);
 const FILES=['./','./pwa.js','./gif-encoder.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable.png'];
