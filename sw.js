@@ -41,6 +41,17 @@ self.addEventListener('fetch',event=>{
   if(!appNavigation&&!URLS.includes(key))return;
   event.respondWith((async()=>{
     const cache=await caches.open(CACHE);
+    if(appNavigation){
+      try{
+        const fresh=await verifiedFetch(key);
+        await cache.put(key,fresh.clone()).catch(()=>{});
+        return fresh;
+      }catch(error){
+        const cached=await cache.match(key);
+        if(cached)return cached;
+        throw error;
+      }
+    }
     const cached=await cache.match(key);
     if(cached)return cached;
     return verifiedFetch(key);
