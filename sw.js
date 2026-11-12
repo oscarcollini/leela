@@ -1,8 +1,8 @@
 'use strict';
-const VERSION='0.4.9';
+const VERSION='0.4.10';
 const CACHE='leela-'+VERSION;
 const BASE=new URL('./',self.location.href);
-const FILES=['./','./pwa.js','./gif-encoder.js','./level.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable.png'];
+const FILES=['./locale.js?v=0410', './manifest-en.webmanifest?v=0410', './','./pwa.js?v=0410','./gif-encoder.js','./level.js','./manifest.webmanifest?v=0410','./icon-192.png','./icon-512.png','./icon-maskable.png'];
 const URLS=FILES.map(p=>new URL(p,BASE).href);
 async function verifiedFetch(url){
   const r=await fetch(new Request(url,{cache:'reload',credentials:'same-origin'}));

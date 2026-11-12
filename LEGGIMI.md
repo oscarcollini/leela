@@ -1,4 +1,4 @@
-# leela — PWA classica 0.4.7
+# leela — PWA 0.4.10
 
 ## Cambiamento
 
@@ -12,9 +12,9 @@ Rimossa la procedura a dieci passaggi della 0.4.6. Non ci sono pulsanti Avanti o
 ## Aggiornamento
 
 1. Estrai lo ZIP.
-2. Carica solo il contenuto della cartella `leela` nello stesso percorso HTTPS del sito esistente, per esempio nella radice del repository GitHub Pages.
+2. Carica solo i file estratti nello stesso percorso HTTPS del sito esistente, per esempio nella radice del repository GitHub Pages.
 3. Riapri il sito in Chrome. Se compare «Aggiorna app», salva gli scatti e toccalo.
-4. In Guida → App attendi lo stato «Pronta per l’uso offline · 0.4.7».
+4. In Guida → App attendi lo stato «Pronta per l’uso offline · 0.4.10».
 
 Non serve rinominare il repository né cambiare URL. Il manifest conserva identità e scope relativi allo stesso percorso. Lo ZIP contiene sorgenti statici; non richiede compilazione o servizi ChatGPT. Il file HTML locale non permette di installare la PWA; usa il sito HTTPS per fotocamera e installazione.
 
